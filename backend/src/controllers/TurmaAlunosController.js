@@ -30,7 +30,7 @@ module.exports = {
     return res.json(turma);
   },
 
-  async create(req, res) {
+  async store(req, res) {
     const { id } = req.params;
     const { alunoId } = req.body;
 

@@ -1,7 +1,7 @@
-// index, show, store, update, destroy
-
 const Professor = require('../models/Professor');
 const Turma = require('../models/Turma');
+
+var admin = require('firebase-admin');
 
 module.exports = {
   async index(req, res) {
@@ -23,19 +23,19 @@ module.exports = {
   async show(req, res) {
     const turmas = await Turma.find({});
 
-    for (var i = 0; i < turmas.length; i++) {
-      await turmas[i].populate('professorResponsavel').execPopulate();
-    }
-
     return res.json(turmas);
   },
 
   async store(req, res) {
-    const { nome, horarioInicio, horarioFim, professorResponsavel } = req.body;
+    const {
+      nome,
+      horarioInicio,
+      horarioFim,
+      faixaEtaria,
+      emailProfessor,
+    } = req.body;
 
     const turmaExiste = await Turma.findOne({ nome });
-
-    const professor = await Professor.findOne({ nome: professorResponsavel });
 
     if (turmaExiste) {
       return res
@@ -43,17 +43,26 @@ module.exports = {
         .json({ error: 'Já existe uma turma cadastrada com esse nome' });
     }
 
+    const professor = await admin.auth().getUserByEmail(emailProfessor);
+
     if (!professor) {
       return res
         .status(400)
-        .json({ error: 'Não existe nenhum professor com esse nome' });
+        .json({ error: 'Não existe nenhum professor com esse email' });
     }
+
+    const professorResponsavel = {
+      uid: professor.uid,
+      email: professor.email,
+      nome: professor.displayName,
+    };
 
     const turma = await Turma.create({
       nome,
       horarioInicio,
       horarioFim,
-      professorResponsavel: professor._id,
+      faixaEtaria,
+      professorResponsavel,
     });
 
     return res.json(turma);
@@ -65,19 +74,26 @@ module.exports = {
       nome,
       horarioInicio,
       horarioFim,
-      professorResponsavel,
+      emailProfessor,
+      faixaEtaria,
       alunos,
     } = req.body;
 
     const turmaId = await Turma.findById({ _id: id });
 
-    const professor = await Professor.findOne({ nome: professorResponsavel });
+    const professor = await admin.auth().getUserByEmail(emailProfessor);
 
     if (!professor) {
       return res
         .status(400)
-        .json({ error: 'Não existe nenhum professor com esse nome' });
+        .json({ error: 'Não existe nenhum professor com esse email' });
     }
+
+    const professorResponsavel = {
+      uid: professor.uid,
+      email: professor.email,
+      nome: professor.displayName,
+    };
 
     await Turma.updateOne(
       {
@@ -87,7 +103,8 @@ module.exports = {
         nome,
         horarioInicio,
         horarioFim,
-        professorResponsavel: professor._id,
+        professorResponsavel,
+        faixaEtaria,
         alunos,
       },
     );

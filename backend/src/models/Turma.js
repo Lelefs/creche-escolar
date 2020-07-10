@@ -14,9 +14,12 @@ const TurmaSchema = new Schema(
       type: Number,
       required: true,
     },
+    faixaEtaria: {
+      type: Number,
+      required: true,
+    },
     professorResponsavel: {
-      type: Schema.Types.ObjectId,
-      ref: 'Professor',
+      type: Object,
     },
     alunos: [
       {

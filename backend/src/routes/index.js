@@ -6,6 +6,7 @@ const AlunoController = require('../controllers/AlunoController');
 const ProfessorController = require('../controllers/ProfessorController');
 const TurmaController = require('../controllers/TurmaController');
 const TurmaAlunosController = require('../controllers/TurmaAlunosController');
+const SessionController = require('../controllers/SessionController');
 
 const routes = Router();
 const upload = multer(uploadConfig);
@@ -30,6 +31,8 @@ routes.delete('/turmas/:id', TurmaController.destroy);
 
 routes.get('/turmaAlunos/:id', TurmaAlunosController.show);
 routes.delete('/turmaAlunos/:id', TurmaAlunosController.destroy);
-routes.post('/turmaAlunos/:id', TurmaAlunosController.create);
+routes.post('/turmaAlunos/:id', TurmaAlunosController.store);
+
+routes.post('/session', SessionController.store);
 
 module.exports = routes;

@@ -1,0 +1,32 @@
+<app-menu></app-menu>
+
+<div class="professores-component">
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Turmas</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Leandro Finochio</td>
+        <td>
+          <ul>
+            <li>1 ano</li>
+            <li>3 ano</li>
+            <li>8 ano</li>
+          </ul>
+        </td>
+        <td>
+          <button class="green" (click)="editarProfessor()">Editar</button>
+          <button class="red" (click)="excluirProfessor()">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="blue" (click)="cadastrarNovoProfessor()">
+    Novo Professor
+  </button>
+</div>

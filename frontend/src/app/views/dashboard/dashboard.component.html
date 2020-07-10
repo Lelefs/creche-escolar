@@ -1,0 +1,32 @@
+<app-menu></app-menu>
+
+<div class="dashboard-component">
+  <table>
+    <thead>
+      <tr>
+        <th>Turma</th>
+        <th>Professor responsável</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1 ano</td>
+        <td>Leandro Finochio</td>
+        <td>
+          <button class="green" (click)="editarTurma()">Editar</button>
+          <button class="red" (click)="excluirTurma()">Excluir</button>
+        </td>
+      </tr>
+      <tr>
+        <td>2 ano</td>
+        <td>Carolina Finochio</td>
+        <td>
+          <button class="green" (click)="editarTurma()">Editar</button>
+          <button class="red" (click)="excluirTurma()">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="blue" (click)="criarNovaTurma()">Nova Turma</button>
+</div>

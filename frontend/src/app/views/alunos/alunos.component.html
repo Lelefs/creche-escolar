@@ -1,0 +1,28 @@
+<app-menu></app-menu>
+
+<div class="alunos-component">
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Responsável</th>
+        <th>Turma</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Daniel Finochio</td>
+        <td>14</td>
+        <td>Leandro Finochio</td>
+        <td>9º ano</td>
+        <td>
+          <button class="green" (click)="editarAluno()">Editar</button>
+          <button class="red" (click)="excluirAluno()">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="blue" (click)="criarNovoAluno()">Novo Aluno</button>
+</div>

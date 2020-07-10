@@ -1,0 +1,23 @@
+.menu-component {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+
+  > nav {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+
+    a {
+      padding: 10px 20px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .logout {
+      margin-left: auto;
+    }
+  }
+}

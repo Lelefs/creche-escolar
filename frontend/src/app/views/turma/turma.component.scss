@@ -1,0 +1,36 @@
+.turma-component {
+  padding: 20px;
+  width: fit-content;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  form {
+    div {
+      margin-bottom: 15px;
+
+      p {
+        font-size: 1.5rem;
+      }
+
+      input {
+        margin-top: 5px;
+        padding: 10px 15px;
+        width: 100%;
+      }
+    }
+
+    .doisInputs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 15px;
+
+      div {
+        margin-bottom: 0;
+      }
+    }
+
+    button {
+      padding: 10px;
+    }
+  }
+}
