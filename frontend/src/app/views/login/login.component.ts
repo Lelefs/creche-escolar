@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from './login.service';
 import { Router } from '@angular/router';
+import { Login } from './login.model';
 
 @Component({
   selector: 'app-login',
@@ -7,13 +9,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private router: Router) {}
+  login: Login = {
+    email: '',
+    senha: '',
+  };
 
-  ngOnInit(): void {}
+  constructor(private router: Router, private loginService: LoginService) {}
+
+  ngOnInit(): void {
+    const user = this.loginService.verificarUsuario();
+    if (user) {
+      this.router.navigate(['/dashboard']);
+    }
+  }
 
   fazerLogin($event) {
     $event.preventDefault();
-    this.router.navigate(['/dashboard']);
+
+    this.loginService.create(this.login);
   }
 
   cadastrar() {

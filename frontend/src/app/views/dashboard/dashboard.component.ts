@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from '../login/login.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private loginService: LoginService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const user = this.loginService.verificarUsuario();
+    if (!user) {
+      this.router.navigate(['/']);
+    }
+  }
 
   editarTurma() {
     this.router.navigate(['/turma']);

@@ -12,6 +12,10 @@ import { TurmaComponent } from './views/turma/turma.component';
 import { ProfessoresComponent } from './views/professores/professores.component';
 import { CriacaoComponent } from './views/alunos/criacao/criacao.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,13 +26,10 @@ import { CriacaoComponent } from './views/alunos/criacao/criacao.component';
     PerfilComponent,
     TurmaComponent,
     ProfessoresComponent,
-    CriacaoComponent
+    CriacaoComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
