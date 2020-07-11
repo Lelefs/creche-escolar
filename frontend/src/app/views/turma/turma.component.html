@@ -4,31 +4,75 @@
   <form>
     <div>
       <label>Nome da turma</label>
-      <input type="text" placeholder="Nome da turma" />
+      <input
+        type="text"
+        placeholder="Nome da turma"
+        [(ngModel)]="turmaForm.nome"
+        name="nome"
+      />
     </div>
 
     <div class="doisInputs">
       <div>
         <label>Horário de início</label>
-        <input type="number" placeholder="Horário de início" min="8" max="17" />
+        <input
+          type="number"
+          placeholder="Horário de início"
+          min="8"
+          max="17"
+          [(ngModel)]="turmaForm.horarioInicio"
+          name="horarioInicio"
+        />
       </div>
 
       <div>
         <label>Horário de fim</label>
-        <input type="number" placeholder="Horário de fim" min="9" max="18" />
+        <input
+          type="number"
+          placeholder="Horário de fim"
+          min="9"
+          max="18"
+          [(ngModel)]="turmaForm.horarioFim"
+          name="horarioFim"
+        />
       </div>
     </div>
 
     <div>
       <label>Faixa etária</label>
-      <input type="number" placeholder="Faixa etária" />
+      <input
+        type="number"
+        placeholder="Faixa etária"
+        [(ngModel)]="turmaForm.faixaEtaria"
+        name="faixaEtaria"
+      />
     </div>
 
     <div>
       <label>Professor responsável</label>
-      <input type="text" placeholder="Professor responsável" />
+      <input
+        type="text"
+        placeholder="Professor responsável"
+        [(ngModel)]="turmaForm.professorResponsavel.email"
+        name="emailProfessor"
+      />
     </div>
 
-    <button class="blue">Salvar</button>
+    <button
+      class="blue"
+      (click)="salvarEditar()"
+      [disabled]="
+        turmaForm.nome === '' ||
+        turmaForm.horarioInicio < 8 ||
+        turmaForm.horarioInicio > 17 ||
+        turmaForm.horarioFim < 9 ||
+        turmaForm.horarioFim > 18 ||
+        turmaForm.horarioInicio >= turmaForm.horarioFim ||
+        turmaForm.faixaEtaria < 0 ||
+        turmaForm.professorResponsavel.email === ''
+      "
+    >
+      {{ salvarOuEditar === 'editar' ? 'Editar' : 'Salvar' }}
+    </button>
   </form>
 </div>

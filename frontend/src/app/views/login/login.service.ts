@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-import { Observable } from 'rxjs';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -19,14 +17,10 @@ export class LoginService {
 
   verificarUsuario() {
     const user = localStorage.getItem('@Creche-escolar');
+
     const userObject = JSON.parse(user);
 
     return userObject;
-  }
-
-  fazerLogin() {
-    alert('Fez o login');
-    this.router.navigate(['/dashboard']);
   }
 
   create(login) {

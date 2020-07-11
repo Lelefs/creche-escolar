@@ -10,20 +10,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1 ano</td>
-        <td>Leandro Finochio</td>
+      <tr *ngFor="let t of turmas">
+        <td>{{ t.nome }}</td>
+        <td>{{ t.professorResponsavel.nome }}</td>
         <td>
-          <button class="green" (click)="editarTurma()">Editar</button>
-          <button class="red" (click)="excluirTurma()">Excluir</button>
-        </td>
-      </tr>
-      <tr>
-        <td>2 ano</td>
-        <td>Carolina Finochio</td>
-        <td>
-          <button class="green" (click)="editarTurma()">Editar</button>
-          <button class="red" (click)="excluirTurma()">Excluir</button>
+          <button class="green" (click)="editarTurma(t)">Editar</button>
+          <button class="red" (click)="excluirTurma(t)">Excluir</button>
         </td>
       </tr>
     </tbody>

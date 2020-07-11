@@ -95,6 +95,14 @@ module.exports = {
       nome: professor.displayName,
     };
 
+    const turmaExiste = await Turma.findOne({ nome, _id: { $ne: id } });
+
+    if (turmaExiste) {
+      return res
+        .status(400)
+        .json({ error: 'Já existe uma turma cadastrada com esse nome' });
+    }
+
     await Turma.updateOne(
       {
         _id: turmaId._id,
