@@ -1,4 +1,4 @@
-const Professor = require('../models/Professor');
+const Aluno = require('../models/Aluno');
 const Turma = require('../models/Turma');
 
 var admin = require('firebase-admin');

@@ -24,12 +24,12 @@ export class DashboardComponent implements OnInit {
     if (!user) {
       this.router.navigate(['/']);
     } else {
-      this.listar();
+      this.listAll();
     }
   }
 
-  listar() {
-    this.dashboardService.listar().subscribe(dados => {
+  listAll() {
+    this.dashboardService.listAll().subscribe(dados => {
       this.turmas = dados;
     });
   }

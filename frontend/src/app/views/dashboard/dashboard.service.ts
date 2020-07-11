@@ -9,7 +9,7 @@ export class DashboardService {
 
   constructor(private http: HttpClient) {}
 
-  listar() {
+  listAll() {
     return this.http.get<any[]>(`${this.baseUrl}/all`);
   }
 

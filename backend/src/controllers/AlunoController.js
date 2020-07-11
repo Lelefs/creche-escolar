@@ -21,13 +21,13 @@ module.exports = {
   },
 
   async store(req, res) {
-    const { filename } = req.file;
+    // const { filename } = req.file;
     const { nome, idade, responsavel, turma } = req.body;
 
     const aluno = await Aluno.create({
       nome,
       idade,
-      foto: filename,
+      // foto: filename,
       responsavel,
       turma,
     });
@@ -37,7 +37,7 @@ module.exports = {
 
   async update(req, res) {
     const { id } = req.params;
-    const { filename } = req.file;
+    // const { filename } = req.file;
     const { nome, idade, responsavel, turma } = req.body;
 
     const alunoId = await Aluno.findById({ _id: id });
@@ -49,7 +49,7 @@ module.exports = {
       {
         nome,
         idade,
-        foto: filename,
+        // foto: filename,
         responsavel,
         turma,
       },

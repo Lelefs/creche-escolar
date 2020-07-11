@@ -12,14 +12,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Daniel Finochio</td>
-        <td>14</td>
-        <td>Leandro Finochio</td>
-        <td>9º ano</td>
+      <tr *ngFor="let a of alunos">
+        <td>{{ a.nome }}</td>
+        <td>{{ a.idade }}</td>
+        <td>{{ a.responsavel }}</td>
+        <td>{{ a.turma }}</td>
         <td>
-          <button class="green" (click)="editarAluno()">Editar</button>
-          <button class="red" (click)="excluirAluno()">Excluir</button>
+          <button class="green" (click)="editarAluno(a)">Editar</button>
+          <button class="red" (click)="excluirAluno(a)">Excluir</button>
         </td>
       </tr>
     </tbody>

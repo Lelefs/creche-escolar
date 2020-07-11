@@ -3,30 +3,56 @@
 <div class="criacao-aluno-component">
   <form>
     <div>
-      <label>Foto</label>
-      <input type="text" placeholder="Foto" />
-    </div>
-
-    <div>
       <label>Nome</label>
-      <input type="text" placeholder="Nome" />
+      <input
+        type="text"
+        placeholder="Nome"
+        [(ngModel)]="alunoForm.nome"
+        name="nome"
+      />
     </div>
 
     <div>
       <label>Idade</label>
-      <input type="number" placeholder="Idade" />
+      <input
+        type="number"
+        placeholder="Idade"
+        [(ngModel)]="alunoForm.idade"
+        name="idade"
+      />
     </div>
 
     <div>
       <label>Responsável</label>
-      <input type="text" placeholder="Responsável" />
+      <input
+        type="text"
+        placeholder="Responsável"
+        [(ngModel)]="alunoForm.responsavel"
+        name="responsavel"
+      />
     </div>
 
     <div>
       <label>Turma</label>
-      <input type="text" placeholder="Turma" />
+      <input
+        type="text"
+        placeholder="Turma"
+        [(ngModel)]="alunoForm.turma"
+        name="turma"
+      />
     </div>
 
-    <button class="blue">Salvar</button>
+    <button
+      class="blue"
+      (click)="salvarEditar()"
+      [disabled]="
+        alunoForm.nome === '' ||
+        alunoForm.idade < 0 ||
+        alunoForm.responsavel === '' ||
+        alunoForm.turma === ''
+      "
+    >
+      {{ salvarOuEditar === 'editar' ? 'Editar' : 'Salvar' }}
+    </button>
   </form>
 </div>
